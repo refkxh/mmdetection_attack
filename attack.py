@@ -20,6 +20,6 @@ for cnt, name in enumerate(names):
     result = inference_detector(model, img)
     end_t = time.time()
     cost_t = 1000 * (end_t - start_t)
-    print(result)
+    print(result.shape)
     print("===>successfully processed img %d, cost %.2f ms." % (cnt + 1, cost_t))
     # model.show_result(img, result, out_file=(output_dir + name))
