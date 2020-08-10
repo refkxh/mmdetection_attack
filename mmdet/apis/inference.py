@@ -93,7 +93,9 @@ def inference_detector(model, img):
     test_pipeline = Compose(test_pipeline)
     # prepare data
     data = dict(img=img)
+    print(data['img'][0].shape)
     data = test_pipeline(data)
+    print(data['img'][0].shape)
     data = collate([data], samples_per_gpu=1)
     if next(model.parameters()).is_cuda:
         # scatter to specified GPU
@@ -113,7 +115,7 @@ def inference_detector(model, img):
     # forward the model
     with torch.no_grad():
         print(data['img'][0].shape)
-        result = model(return_loss=True, rescale=True, **data)
+        result = model(return_loss=False, rescale=True, **data)
         print(result)
     return result
 
