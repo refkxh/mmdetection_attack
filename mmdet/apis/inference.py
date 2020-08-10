@@ -112,7 +112,9 @@ def inference_detector(model, img):
 
     # forward the model
     with torch.no_grad():
+        print(data)
         result = model(return_loss=False, rescale=True, **data)
+        print(len(result))
     return result
 
 
